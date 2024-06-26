@@ -10,7 +10,7 @@ function findMedian(arr) {
 }
 
 function findMode(arr) {
-  return arr
+  return +arr
     .sort(
       (a, b) =>
         arr.filter((v) => v === a).length - arr.filter((v) => v === b).length
@@ -18,11 +18,21 @@ function findMode(arr) {
     .pop();
 }
 
-console.log(findMedian([1, 3, 50, 6]));
-console.log(findMode([1, 2, 6, 5, 6, 9, 0, 8, 6, 2, 6, 6, 6]));
+function convertStringToNumsArray(str) {
+  return str.split(",").map((num) => {
+    const parsedNum = parseFloat(num);
+    if (isNaN(parsedNum)) {
+      throw new ExpressError(`${num} is not a number`, 400);
+    }
+    return parsedNum;
+  });
+}
+
+console.log(findMean([1, 3, 5, 7]));
 
 module.exports = {
   findMean,
   findMedian,
   findMode,
+  convertStringToNumsArray,
 };
