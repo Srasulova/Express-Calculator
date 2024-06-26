@@ -1,4 +1,5 @@
 function findMean(arr) {
+  if (arr.length === 0) return 0;
   const mean = arr.reduce((a, b) => a + b, 0) / arr.length;
   return +mean;
 }
